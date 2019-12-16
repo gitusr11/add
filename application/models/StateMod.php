@@ -1,11 +1,11 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class CountryMod extends CI_Model{
+class StateMod extends CI_Model{
     
-    public function saveCountry($data){
+    public function saveState($data){
         if($data){
-            $response = $this->db->insert('countries', $data); 
+            $response = $this->db->insert('states', $data); 
             if($response){
                 return true;
             }else{
@@ -14,10 +14,10 @@ class CountryMod extends CI_Model{
         }
     }
 
-    public function updateCountry($data){
+    public function updateState($data){
         if($data){
-            $this->db->where('country_id', $data['country_id']);
-            $response = $this->db->update('countries', $data); 
+            $this->db->where('state_id', $data['state_id']);
+            $response = $this->db->update('states', $data); 
             if($response){
                 return true;
             }else{
@@ -26,11 +26,11 @@ class CountryMod extends CI_Model{
         }
     }
 
-    public function removeCountry($id){
+    public function removeState($id){
         if($id){
-            $this->db->where('country_id', $id);
-             $data = array('country_status'=>0);
-            $response = $this->db->update('countries', $data); 
+            $this->db->where('state_id', $id);
+             $data = array('state_status'=>0);
+            $response = $this->db->update('states', $data); 
             if($response){
                 return true;
             }else{
@@ -39,9 +39,9 @@ class CountryMod extends CI_Model{
         }
     }
 
-    public function getAllCountry(){
+    public function getAllState(){
 
-        $query = $this->db->get_where('countries', array('country_status' => 1));
+        $query = $this->db->get_where('states', array('state_status' => 1));
         $result=$query->result();
         if($result){
             return $result;
@@ -51,26 +51,27 @@ class CountryMod extends CI_Model{
         
     }
 
-    public function getCountryOption(){
+
+    public function getStateOption(){
         $results = array();
-        $this->db->select("country_id,country_name"); 
-        $query = $this->db->get_where('countries', array('country_status' => 1));
+        $this->db->select("state_id,state_name"); 
+        $query = $this->db->get_where('states', array('state_status' => 1));
         $result=$query->result_array();
-       return $result ;
+        return $result;
+       
         // if($result){
         //     foreach ($result as $key => $value) {
-        //         $results[$value->country_id] = $value->country_name;
+        //         $results[$value->state_id] = $value->state_name;
         //     }
         //     return $results;
         // }else{
         //     return false;
         // }
-        
     }
 
-    public function getCountryById($id){
+    public function getStateById($id){
 
-        $query = $this->db->get_where('countries', array('country_id' => $id,'country_status' => 1));
+        $query = $this->db->get_where('states', array('state_id' => $id,'state_status' => 1));
         $result = $query->row();
        // $result=$query->result();
         if($result){

@@ -22,6 +22,24 @@
               </i>Category
             </a>
           </li>
+          <li>
+            <a href="<?php echo base_url('master/country_list');?>">
+              <i class="metismenu-icon">
+              </i>Country
+            </a>
+          </li>
+          <li>
+            <a href="<?php echo base_url('master/state_list');?>">
+              <i class="metismenu-icon">
+              </i>State
+            </a>
+          </li>
+          <li>
+            <a href="<?php echo base_url('master/city_list');?>">
+              <i class="metismenu-icon">
+              </i>City
+            </a>
+          </li>
         </ul>
       </li>
 
